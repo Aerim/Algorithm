@@ -1,0 +1,10 @@
+def solution(n):
+    answer = []
+    
+    for i in range(1,int(n**0.5)+1):
+        if n % i == 0 :
+            answer.append(i)
+            answer.append(n//i)
+    
+    # 제곱수 제거해서 넣기
+    return sum(list(set(answer)))
