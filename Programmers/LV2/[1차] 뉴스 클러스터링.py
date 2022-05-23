@@ -8,54 +8,39 @@ def intersection(arr1,arr2):
 
     dict = Counter(arr1)
     dict1 = Counter(arr2)
-
+    
     for k,v in dict.items():
         if k in dict1:
-
+        
             intersec += min(dict[k],dict1[k])
-
+    
     return intersec
-
-def union(arr1, arr2):
-    uni = 0
-
-    dict = Counter(arr1)
-    dict1 = Counter(arr2)
-
-    for k,v in dict.items():
-
-        if k in dict1:
-            uni += max(dict[k],dict1[k])
-        else:
-            uni += dict[k]
-
-    return uni
 
 def solution(str1, str2):
     answer = 0
     s1, s2 = [], []
     _s1, _s2 = [], []
-
+    
     if len(str1) == 0 and len(str2) == 0:
         return 1 * 65536
-
+    
     for i in str1:
         if i.isalpha() == True:
             s1.append(i.lower())
         else:
             s1.append(' ')
-
+          
     for i in str2:
         if i.isalpha() == True:
             s2.append(i.lower())
         else:
             s2.append(' ')
-
+            
     for i in range(len(s1)):
         if i + 1 < len(s1) and s1[i+1] != ' ' and s1[i] != ' ':
             temp = s1[i] + s1[i+1]
             _s1.append(temp)
-
+    
     for i in range(len(s2)):
         if i + 1 < len(s2) and s2[i+1] != ' ' and s2[i] != ' ':
             temp = s2[i] + s2[i+1]
@@ -63,9 +48,8 @@ def solution(str1, str2):
 
     if len(_s1) == 0 and len(_s2) == 0:
         return 1 * 65536
-
+    
     a = intersection(_s1,_s2)    
-    b= union(_s1,_s2)
-
+    
     b = len(_s1) + len(_s2) - a
     return int(a / b * 65536)
